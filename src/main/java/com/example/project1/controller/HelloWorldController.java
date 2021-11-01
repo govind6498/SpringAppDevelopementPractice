@@ -1,5 +1,7 @@
 package com.example.project1.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +16,12 @@ public class HelloWorldController {
 	}
 	
 	@RequestMapping(value= {"/query"},method=RequestMethod.GET)
-	public String syHello(@RequestParam(value="name") String name) {
+	public String syHello(@RequestParam(value="fName") String fName, @RequestParam(value="lName") String lName) {
+		return "Hello "+fName+" "+lName+"!";
+	}
+	
+	@GetMapping("/param/{name}")
+	public String sysHello(@PathVariable String name) {
 		return "Hello "+name+"!";
 	}
 
